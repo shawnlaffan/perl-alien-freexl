@@ -33,7 +33,7 @@ share {
   my $with_cpp11 = '';
 
   #  need to work out how to get latest
-  start_url 'http://www.gaia-gis.it/gaia-sins/freexl-sources/';
+  start_url 'https://www.gaia-gis.it/gaia-sins/freexl-sources/';
   plugin Download => (
     filter  => qr/^freexl-([0-9\.]+)\.tar\.gz$/,
     version => qr/^freexl-([0-9\.]+)\.tar\.gz$/,
