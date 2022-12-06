@@ -30,3 +30,10 @@ task:
     - perl Makefile.PL
     - make
     - make test
+    - make clean
+
+  system_install:
+    - sudo pkg install -y freexl
+    - perl Makefile.PL
+    - make
+    - make test
