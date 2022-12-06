@@ -56,7 +56,6 @@ jobs:
         run: |
           cpanm --notest Alien::Build
           cpanm --notest Alien::Build::MM
-          cpanm --installdeps .
 
       - name: Build and then run tests
         run: |
