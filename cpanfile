@@ -8,3 +8,4 @@ requires "File::Find::Rule";
 requires "Env::ShellWords";
 requires "File::Which";
 requires "Mojo::DOM58";
+requires "URI";
