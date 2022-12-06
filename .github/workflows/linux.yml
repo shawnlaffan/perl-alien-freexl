@@ -48,7 +48,6 @@ jobs:
           echo $(perl -Mlocal::lib=${HOME}/perl5)
           eval "$(perl -Mlocal::lib=${HOME}/perl5)"
           cpanm --notest Alien::Build
-          cpanm --installdeps .
           
       - name: Build and test
         run: |
