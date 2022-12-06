@@ -2,6 +2,8 @@ freebsd_instance:
   image_family: freebsd-13-0
 
 task:
+  name: share
+
   env:
     AUTOMATED_TESTING: 1
     PERL_MOD_DIR: /perl5
@@ -33,6 +35,8 @@ task:
     - make clean
 
 task:
+  name: system
+
   env:
     AUTOMATED_TESTING: 1
     PERL_MOD_DIR: /perl5
