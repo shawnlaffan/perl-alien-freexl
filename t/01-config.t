@@ -5,6 +5,7 @@ use Alien::freexl;
 
 diag( 'NAME=' . Alien::freexl->config('name') );
 diag( 'VERSION=' . Alien::freexl->config('version') );
+diag( 'Install type=' . Alien::freexl->install_type );
 
 my $alien = Alien::freexl->new;
 
