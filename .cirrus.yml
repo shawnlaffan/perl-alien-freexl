@@ -32,8 +32,30 @@ task:
     - make test
     - make clean
 
-  system_install:
-    - sudo pkg install -y freexl
+task:
+  env:
+    AUTOMATED_TESTING: 1
+    PERL_MOD_DIR: /perl5
+
+  cpan_cache:
+    folder: /perl5
+    reupload_on_changes: false # set to false if there is a fingerprint script
+    fingerprint_script:
+      - echo $CIRRUS_OS 20221206
+
+  install_script:
+    - sudo pkg install -y p5-App-cpanminus freexl
+    - sudo cpanm local::lib
+    #- cpanm --local-lib=$PERL_MOD_DIR local::lib && eval $(perl -I ${PERL_MOD_DIR}/lib/perl5/ -Mlocal::lib)
+    - echo probe local::lib
+    - perl -I ${PERL_MOD_DIR}/lib/perl5/ -Mlocal::lib
+    - echo Run it anyway...
+    - eval $(perl -I ${PERL_MOD_DIR}/lib/perl5/ -Mlocal::lib)
+
+  script:
+    - eval $(perl -I ${PERL_MOD_DIR}/lib/perl5/ -Mlocal::lib)
+    - sudo cpanm --notest Alien::gmake
+    - sudo cpanm --notest --installdeps .
     - perl Makefile.PL
     - make
     - make test
