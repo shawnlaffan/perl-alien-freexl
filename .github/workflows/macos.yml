@@ -20,7 +20,7 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Perl
         run: |
@@ -41,7 +41,7 @@ jobs:
       - name: Prepare for cache
         run: |
           perl -V > perlversion.txt
-          echo '20221206' >> perlversion.txt
+          echo '20241014' >> perlversion.txt
           ls -l perlversion.txt
 
       - name: Cache CPAN modules
