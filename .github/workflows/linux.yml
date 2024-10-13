@@ -31,15 +31,15 @@ jobs:
           perl -V > perlversion.txt
           echo '20241014' >> perlversion.txt
           ls -l perlversion.txt
-
-      - name: Cache CPAN modules
-        uses: actions/cache@v3
-        with:
-            path: ~/perl5
-          key: ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
-
+          
+      # - name: Cache CPAN modules
+        # uses: actions/cache@v4
+        # with:
+            # path: ~/perl5
+          # key: ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
+          # restore-keys: |
+            # ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
+            
       - name: Install Dynamic Dependencies
         run: |
           which -a cpanm
