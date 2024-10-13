@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - uses: shogo82148/actions-setup-perl@v1
         with:
-          perl-version: '5.32'
+          perl-version: '5.38'
 
       - name: perl -V
         run: perl -V
@@ -29,17 +29,17 @@ jobs:
       - name: Prepare for cache
         run: |
           perl -V > perlversion.txt
-          echo '20221206' >> perlversion.txt
+          echo '20241014' >> perlversion.txt
           ls -l perlversion.txt
-
-      - name: Cache CPAN modules
-        uses: actions/cache@v3
-        with:
-          path: ~/perl5
-          key: ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
-
+          
+      # - name: Cache CPAN modules
+        # uses: actions/cache@v4
+        # with:
+            # path: ~/perl5
+          # key: ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
+          # restore-keys: |
+            # ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
+            
       - name: Install Dynamic Dependencies
         run: |
           which -a cpanm
